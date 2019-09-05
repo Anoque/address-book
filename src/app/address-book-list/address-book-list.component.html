@@ -1,0 +1,8 @@
+<p>Список адресов</p>
+
+<div>
+  <div *ngFor="let address of getAddresses()">
+    {{ address.label }}<br>
+    Координаты: {{ address.lat }}, {{ address.lng }}
+  </div><br>
+</div>
