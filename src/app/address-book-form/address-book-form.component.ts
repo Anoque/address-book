@@ -37,16 +37,20 @@ export class AddressBookFormComponent implements OnInit {
 
     this.route.params.subscribe((params: Params) => {
       if (typeof params.id !== 'undefined') {
-        if (this.dataService.loadStatus.getValue() === DataService.LOADED) {
+        this.dataService.setTitle('Редактирование адреса');
+
+        if (this.dataService.loadStatus.getValue() === DataService.WITH_KEYS) {
           this.setData(params.id);
         } else {
           const waiting = this.dataService.loadStatus.subscribe((status: string) => {
-            if (status === DataService.LOADED) {
+            if (status === DataService.WITH_KEYS) {
               this.setData(params.id);
               waiting.unsubscribe();
             }
           });
         }
+      } else {
+        this.dataService.setTitle('Добавление адреса');
       }
     });
   }
@@ -73,7 +77,7 @@ export class AddressBookFormComponent implements OnInit {
     };
 
     if (this.addressId != null) {
-      // set data
+      this.dataService.updateValue(this.addressId, address);
     } else {
       this.dataService.addItem(address);
     }

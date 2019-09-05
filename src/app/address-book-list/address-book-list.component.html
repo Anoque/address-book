@@ -1,11 +1,15 @@
 <h2>Список адресов</h2>
+<div class="address-book-search">
+  <mat-form-field>
+    <input matInput type="text" placeholder="Поиск" [(ngModel)]="search">
+  </mat-form-field>
+</div>
 
 <div id="address-book-list-wrapper">
-  <mat-card *ngFor="let item of getAddresses(); let i = index;">
-    <mat-card-header>{{ item.label }}</mat-card-header>
+  <mat-card *ngFor="let item of getAddresses(); let i = index;" class="address-item">
     <mat-card-content>
+      <h3 title="Координаты: {{ item.lat }}, {{ item.lng }}">{{ item.label }}</h3>
       <p>{{ item.info }}</p>
-      <span>Координаты: {{ item.lat }}, {{ item.lng }}</span>
     </mat-card-content>
     <mat-card-actions>
       <button mat-flat-button color="primary" [routerLink]="['edit', i]">Редактировать</button>

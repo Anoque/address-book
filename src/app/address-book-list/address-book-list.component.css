@@ -1,9 +1,42 @@
 #address-book-list-wrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-content: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   width: 100%;
 }
 
 #address-book-list-wrapper .address-item {
-  width: 400px;
+  width: calc(33% - 48px);
+  max-width: 600px;
+  margin: 10px;
+}
+
+#address-book-list-wrapper .address-book-search {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+h3 {
+  font-size: 1.2em;
+}
+
+@media (max-width: 1210px) {
+  #address-book-list-wrapper {
+    justify-content: space-between;
+  }
+
+  #address-book-list-wrapper .address-item {
+    width: calc(50% - 52px);
+  }
+}
+
+@media (max-width: 620px) {
+  #address-book-list-wrapper .address-item {
+    min-width: 100px;
+    width: 100%;
+    /*justify-content: space-between;*/
+  }
 }

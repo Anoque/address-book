@@ -1,6 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatToolbarModule} from '@angular/material';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatProgressSpinnerModule,
+  MatToolbarModule
+} from '@angular/material';
 import { AgmCoreModule } from '@agm/core';
 import { environment } from '../../environments/environment';
 
@@ -15,14 +22,16 @@ import { environment } from '../../environments/environment';
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MatButtonModule,
     MatToolbarModule,
     MatFormFieldModule,
     MatInputModule,
-    MatCardModule
+    MatCardModule,
+    MatProgressSpinnerModule
   ]
 })
 export class SharedModule { }
