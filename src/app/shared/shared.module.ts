@@ -10,7 +10,7 @@ import { AgmCoreModule } from '@agm/core';
   imports: [
     CommonModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyAQyMCp0ilXvkgQVXNguHJrp086FBvmujg'
+      apiKey: ''
     }),
     MatButtonModule,
     MatToolbarModule,
