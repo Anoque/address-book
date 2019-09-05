@@ -7,6 +7,10 @@
       <textarea matInput id="info" formControlName="info" placeholder="Заметка"></textarea>
     </mat-form-field>
   </div>
+  <div class="coords-wrapper">
+    <span>Latitude: {{ lat }}</span>
+    <span>Longitude: {{ lng }}</span>
+  </div>
 
   <agm-map
     [latitude]="lat"
