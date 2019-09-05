@@ -13,10 +13,14 @@
   margin: 10px;
 }
 
-#address-book-list-wrapper .address-book-search {
+#address-book-search {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+#address-book-search .search-block {
+  width: 400px;
 }
 
 h3 {
@@ -39,5 +43,9 @@ h3 {
     min-width: 100px;
     width: 100%;
     /*justify-content: space-between;*/
+  }
+
+  #address-book-search .search-block {
+    width: auto;
   }
 }
