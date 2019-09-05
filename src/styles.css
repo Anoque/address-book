@@ -6,6 +6,16 @@
   padding: 0;
 }
 
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
 agm-map {
   height: 500px;
+}
+
+h2 {
+  display: inline-block;
+  font-size: 1.5em;
+  margin: 20px 0;
 }

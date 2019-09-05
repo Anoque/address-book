@@ -1,8 +1,14 @@
-<p>Список адресов</p>
+<h2>Список адресов</h2>
 
-<div>
-  <div *ngFor="let address of getAddresses()">
-    {{ address.label }}<br>
-    Координаты: {{ address.lat }}, {{ address.lng }}
-  </div><br>
+<div id="address-book-list-wrapper">
+  <mat-card *ngFor="let address of getAddresses(); let i = index;" class="address-item">
+    <mat-card-header>{{ address.label }}</mat-card-header>
+    <mat-card-content>
+      <p>{{ address.info }}</p>
+      <span>Координаты: {{ address.lat }}, {{ address.lng }}</span>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-flat-button color="primary" [routerLink]="['edit', i]">Редактировать</button>
+    </mat-card-actions>
+  </mat-card>
 </div>

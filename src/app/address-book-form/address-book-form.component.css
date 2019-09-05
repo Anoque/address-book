@@ -1,0 +1,9 @@
+#address-book-form,
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-wrapper {
+  width: 500px;
+}

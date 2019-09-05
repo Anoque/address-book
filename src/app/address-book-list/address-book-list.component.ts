@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Address, DataService} from '../shared/data.service';
+import { Address, DataService } from '../shared/data.service';
 
 @Component({
   selector: 'app-address-book-list',
