@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Address, DataService } from '../shared/data.service';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-address-book-list',
@@ -8,13 +9,11 @@ import { Address, DataService } from '../shared/data.service';
 })
 export class AddressBookListComponent implements OnInit {
 
-  constructor(private dataService: DataService) { }
+  constructor(private dataService: DataService, private db: AngularFirestore) {  }
 
-  ngOnInit() {
-  }
+  ngOnInit() {  }
 
   getAddresses(): Address[] {
-    return this.dataService.addresses;
+    return this.dataService.items;
   }
-
 }

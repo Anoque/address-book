@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
+import { BehaviorSubject } from 'rxjs';
 
 export interface Address {
   label: string;
@@ -11,23 +13,40 @@ export interface Address {
   providedIn: 'root'
 })
 export class DataService {
-  addresses: Address[];
+  static readonly NOT_LOADED = 'not_loaded';
+  static readonly LOADED = 'loaded';
 
-  constructor() {
-    this.addresses = [];
-    this.setDefaultValues();
-  }
+  itemsCollection: AngularFirestoreCollection<Address>;
+  keys: string[];
+  items: Address[];
+  loadStatus: BehaviorSubject<string>;
 
-  addAddress(address: Address) {
-    this.addresses.push(address);
-  }
-
-  setDefaultValues() {
-    this.addAddress({
-      label: 'Улица',
-      info: 'Большой театр',
-      lat: 55.030684,
-      lng: 82.924323
+  constructor(private afs: AngularFirestore) {
+    this.loadStatus = new BehaviorSubject<string>(DataService.NOT_LOADED);
+    this.keys = [];
+    this.itemsCollection = this.afs.collection('addresses');
+    this.itemsCollection.valueChanges().subscribe((res: Address[]) => {
+      this.items = res;
+      this.getSnapshots().then((snapshots: any[]) => {
+        for (let i = 0; i < snapshots.length; i++) {
+          this.keys.push(snapshots[i].payload.doc.id);
+        }
+        this.loadStatus.next(DataService.LOADED);
+        console.log(this.keys);
+      });
     });
+  }
+
+  getSnapshots() {
+    return new Promise<any>((resolve, reject) => {
+      this.afs.collection('addresses').snapshotChanges()
+        .subscribe(snapshots => {
+          resolve(snapshots);
+        });
+    });
+  }
+
+  addItem(item: Address) {
+    this.itemsCollection.add(item);
   }
 }

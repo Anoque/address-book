@@ -9,6 +9,9 @@ import { AddressBookFormComponent } from './address-book-form/address-book-form.
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AgmCoreModule } from '@agm/core';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,9 @@ import { AgmCoreModule } from '@agm/core';
     SharedModule,
     ReactiveFormsModule,
     FormsModule,
-    AgmCoreModule
+    AgmCoreModule,
+    AngularFireModule.initializeApp(environment.firebase, 'addresses'),
+    AngularFirestoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
